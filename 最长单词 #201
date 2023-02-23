@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    char chArr[100] = {0};
+    cin.getline(chArr, 100); 
+    int i = 0, j, pivot,length=0;
+    while(i < 100)
+    {
+        if(chArr[i] == '\0') break;
+        j = i;
+        while (chArr[i] != ' ' && chArr[i] != '\0') i++;
+        if((i - j) > length)
+        {
+            length = i - j;
+            pivot = j;
+        }
+        i++;
+    }
+    for(int k = pivot; k < pivot + length; k++) cout << chArr[k];
+}
