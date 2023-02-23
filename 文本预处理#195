@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+bool checkRedundant(char [][101], char [], int);
+int strlen_c(char[]);
+bool strcmp_c(char[], char[]);
+
+int main() {
+    const int SIZE = 101;
+    char chArr[SIZE];
+    char words[50][101];
+    cin.getline(chArr, SIZE);
+    int length = 0;
+    while(chArr[length] != '\0') length++;
+    for(int i = 0; i < length; i++)
+    {
+        if(chArr[i] > 'z' || chArr[i] < 'a')
+        {
+            if(chArr[i] <= 'Z' && chArr[i] >= 'A')
+            {
+                chArr[i] += 32;
+            }
+            else {
+                chArr[i] = ' ';
+            }
+        }
+    }
+    int subLength, i = 0, j = 0, index = 0;
+    while(i < length)
+    {   
+        if(chArr[i] == ' ') i++;
+        else
+         {
+             j = i;
+            while(chArr[i] != ' ') i++;
+            subLength = i - j;
+            int k;
+            char tempt[101] = {0};
+            for(k = 0; k < subLength; k++)
+            {
+                tempt[k] = chArr[j + k];
+            }
+            if(!checkRedundant(words, tempt, index))
+            {
+                for(k = 0; k < subLength; k++)
+                {
+                    words[index][k] = tempt[k];
+                }
+                words[index++][++k] = '\0';
+            }
+            i++;
+         }
+    }
+    for(int p = 0; p < index; p++)
+    {
+         cout << words[p];
+         if(p != index - 1)
+         {
+             cout << ' ';
+         }
+    }
+    cout << endl;
+    cout << index;
+}
+
+bool checkRedundant(char words[][101], char word[], int num)
+{
+    for(int i = 0; i < num; i++)
+    {
+        if(strcmp_c(word, words[i])) return true;
+    }
+    return false;
+}
+
+bool strcmp_c(char w1[], char w2[])
+{
+    int l1 = strlen_c(w1), l2 = strlen_c(w2);
+    if(l1 != l2) return false;
+    else
+    {
+        for(int i = 0; i < l1; i++)
+        {
+            if(w1[i] != w2[i]) return false;
+        }
+        return true;               
+    };
+}
+
+int strlen_c(char w[])
+{
+    int length = 0;
+    while(w[length]) length++;
+    return length;
+}
