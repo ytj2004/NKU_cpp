@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int A[10] = { 1, -2, 3 };
+	for (int i = 3; i < 10; i++) cin >> A[i];
+	int average, min = 0, max = 0, sum = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		if (A[i] > max) max = A[i];
+		if (A[i] < min) min = A[i];
+		sum += A[i];
+	}
+	average = sum / 10;
+	cout << max << ' ' << min << ' ' << average << endl;
+
+	int tempt;
+	for (int j = 0; j < 5; j++)
+	{
+		tempt = A[j];
+		A[j] = A[9 - j];
+		A[9 - j] = tempt;
+	}
+	
+	for (int i = 0; i < 10; i++)
+	{
+		cout << A[i] << ' ';
+	}
+
+	int B[10];
+	for (int i = 0; i < 10; i++)
+	{
+		B[i] = A[i];
+	}
+
+	//尝试越界访问
+	cout << A[-1]; //输出-858993460
+	return 0;
+}
