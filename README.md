@@ -1,2 +1,3 @@
 # NKUOJ_Questions
-OJ上的一些过期的练习题(雾)
+c艹学习过程中的代码笔记
+NKUOJ上过期的一些练习题
