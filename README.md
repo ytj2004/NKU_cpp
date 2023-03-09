@@ -1,3 +1,3 @@
-# NKUOJ_Questions
+# 大笨b的C艹学习历程
 c艹学习过程中的代码笔记
 NKUOJ上过期的一些练习题
